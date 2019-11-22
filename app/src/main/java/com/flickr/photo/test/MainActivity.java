@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity
     SwipeRefreshLayout swipeRefresh;
     private PostRecyclerAdapter adapter;
     private int currentPage = PAGE_START;
-    private boolean isLastPage = false;
+    private boolean isLastPage = false; // inifinty
     int itemCount = 0;
     GalleryController controller;
 
@@ -61,10 +61,7 @@ public class MainActivity extends AppCompatActivity
                     public void onItemClick(View view, int position) {
                         Photo p = adapter.getItem(position);
                         String url = p != null && p.getUrl() != null ? p.getUrl() : "";
-                        Log.w("xxxxxxxxxxxxx", url);
-                        Log.w("xxxxxxxxxxxxx", (savedInstanceState == null) + "");
                         if (savedInstanceState == null) {
-                            Log.w("xxxxxxxxxxxxx", "commit");
                             getSupportFragmentManager().beginTransaction()
                                     .replace(R.id.main_page, FullScreenFragment.newInstance(url))
                                     .addToBackStack("full_screen")
